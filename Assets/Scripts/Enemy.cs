@@ -20,7 +20,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected abstract void Move();
 
-    protected IEnumerator AttackCooldown() {
+    protected IEnumerator AttackCooldown() { //ABSTRACTION
         yield return new WaitForSeconds (attackCooldown);
         canAttack = true;
     }

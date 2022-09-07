@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySwordsman : Enemy
+public class EnemySwordsman : Enemy //INHERITANCE
 {
-    protected override void Move() {
+    protected override void Move() { //POLYMORPHISM
         float playerXDirection = Player.instance.transform.position.x - transform.position.x;
         if (playerXDirection > 0) {
             playerXDirection = 1;

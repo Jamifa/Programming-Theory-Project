@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToughEnemy : Enemy
+public class ToughEnemy : Enemy //INHERITANCE
 {
     private void Start() {
         health = 3;
         attackCooldown = 1.5f;
     }
 
-    protected override void Attack() {
+    protected override void Attack() { //POLYMORPHISM
         Player.instance.health -= 10; //remove another 10 health
         base.Attack ();
     }

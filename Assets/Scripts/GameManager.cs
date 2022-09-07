@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int waveNumber = 0;
     private bool isSpawningWave = false;
 
-    [SerializeField] private int m_enemyCount;
+    [SerializeField] private int m_enemyCount; //ENCAPSULATION
     public int enemyCount {
         get { return m_enemyCount; }
         set {
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         isSpawningWave = false;
     }
 
-    private void SpawnEnemyWave() {
+    private void SpawnEnemyWave() { //ABSTRACTION
         waveNumber++;
         for (int i = 0; i < waveNumber; i++) {
             Vector3 spawnPos = new Vector3 (Random.Range (-spawnPosXRange, spawnPosXRange), spawnPosY, 0);
