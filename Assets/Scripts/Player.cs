@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
+    public int health = 100;
     private Rigidbody playerRb;
     [SerializeField] private float moveSpeed;
     private float horizontalInput;
@@ -16,6 +19,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+
         playerRb = GetComponent<Rigidbody> ();
     }
 
@@ -43,12 +48,17 @@ public class Player : MonoBehaviour
                 gunshotPath.SetPosition (1, hit.point);
                 StartCoroutine (RemoveGunshotPath ());
                 if(hit.collider.gameObject.CompareTag("Enemy")) {
-                    Destroy (hit.collider.gameObject);
+                    Enemy enemyScript = hit.collider.gameObject.GetComponent<Enemy> ();
+                    enemyScript.ChangeHealth (-1);
                 }
             } else {
                 gunshotPath.SetPosition (1, gunshot.GetPoint (50f));
                 StartCoroutine (RemoveGunshotPath ());
             }
+        }
+
+        if(health <= 0) {
+            Debug.Log ("Game Over");
         }
     }
 
